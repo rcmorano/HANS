@@ -1,0 +1,68 @@
+# USB Base Class E0h (Wireless Controller) device HANS udev-rules file
+#
+# This base class is defined for devices that are Wireless controllers. Values
+# not shown in the table below are reserved. These class codes are to be used in
+# Interface Descriptors, with the exception of the Bluetooth class code which
+# can also be used in a Device Descriptor. 
+#
+# Spec used to create the rule: http://www.usb.org/developers/defined_class
+
+ENV{HANS_TAG}=="1", GOTO="hans_end"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="01", \
+	ATTRS{bDeviceProtocol}=="01", \
+	ENV{MIMETYPE}="x-usb-device/bluetooth-api", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="01", \
+	ATTRS{bDeviceProtocol}=="02", \
+	ENV{MIMETYPE}="x-usb-device/uwb-radio-control", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="01", \
+	ATTRS{bDeviceProtocol}=="03", \
+	ENV{MIMETYPE}="x-usb-device/remote-ndis", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="01", \
+	ATTRS{bDeviceProtocol}=="04", \
+	ENV{MIMETYPE}="x-usb-device/bluetooth-amp-controller", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="02", \
+	ATTRS{bDeviceProtocol}=="01", \
+	ENV{MIMETYPE}="x-usb-device/host-wire-control-data", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="02", \
+	ATTRS{bDeviceProtocol}=="02", \
+	ENV{MIMETYPE}="x-usb-device/device-wire-control-data", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="E0", \
+	ATTRS{bDeviceSubClass}=="02", \
+	ATTRS{bDeviceProtocol}=="03", \
+	ENV{MIMETYPE}="x-usb-device/device-wire-isochronous", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+LABEL="hans_end"

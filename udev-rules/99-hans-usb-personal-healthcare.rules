@@ -1,0 +1,19 @@
+# USB Base Class 0Fh (Personal Healthcare) device HANS udev-rules file
+#
+# This base class is defined for devices that conform to the Personal Healthcare
+# Device Class Specification found on the USB-IF website. That specification
+# defines the usable set of SubClass and Protocol values. Values outside of that
+# defined spec are reserved. These class codes should only be used in Interface
+# Descriptors.
+#
+# Spec used to create the rule: http://www.usb.org/developers/defined_class
+
+ENV{HANS_TAG}=="1", GOTO="hans_end"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="0F", \
+	ENV{MIMETYPE}="x-usb-device/personal-healthcare", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+LABEL="hans_end"
