@@ -1,0 +1,20 @@
+# USB Base Class 01h (Audio) device HANS udev-rules file
+#
+# This base class is defined for Audio capable devices that conform to the Audio
+# Device Class Specification found on the USB-IF website. That specification
+# defines the usable set of SubClass and Protocol values. Values outside of that
+# defined spec are reserved. These class codes may only be used in Interface
+# Descriptors.
+#
+# Spec used to create the rule: http://www.usb.org/developers/defined_class
+
+ENV{HANS_TAG}=="1", GOTO="skip_device"
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="01", \
+	ENV{MIMETYPE}="x-usb-device/audio", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
+
+LABEL="skip_device"
