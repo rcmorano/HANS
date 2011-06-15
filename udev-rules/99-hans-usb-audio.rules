@@ -13,7 +13,8 @@ ENV{HANS_TAG}=="1", GOTO="hans_end"
 ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="01", \
 	ENV{MIMETYPE}="x-usb-device/audio", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 

@@ -13,7 +13,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="01", \
 	ATTRS{bDeviceProtocol}=="01", \
 	ENV{MIMETYPE}="x-usb-device/activesync", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
@@ -21,7 +22,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="01", \
 	ATTRS{bDeviceProtocol}=="02", \
 	ENV{MIMETYPE}="x-usb-device/palm", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
@@ -29,7 +31,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="02", \
 	ATTRS{bDeviceProtocol}=="01", \
 	ENV{MIMETYPE}="x-usb-device/iface-association-desc", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
@@ -37,7 +40,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="02", \
 	ATTRS{bDeviceProtocol}=="02", \
 	ENV{MIMETYPE}="x-usb-device/wire-multifunction", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
@@ -45,7 +49,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="03", \
 	ATTRS{bDeviceProtocol}=="01", \
 	ENV{MIMETYPE}="x-usb-device/cable-association-framework", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 LABEL="hans_end"

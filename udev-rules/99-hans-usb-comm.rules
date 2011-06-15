@@ -14,7 +14,8 @@ ENV{HANS_TAG}=="1", GOTO="hans_end"
 ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="02", \
 	ENV{MIMETYPE}="x-usb-device/communications", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 LABEL="hans_end"

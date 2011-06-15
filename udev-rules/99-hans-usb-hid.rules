@@ -21,6 +21,7 @@ KERNEL=="mouse*|mice*", \
 ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="03", \
 	ENV{MIMETYPE}="x-usb-device/hid", \
+        ENV{HANS_TAG}!="1", \
 	ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 

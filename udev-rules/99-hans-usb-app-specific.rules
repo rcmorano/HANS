@@ -15,7 +15,8 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="01", \
 	ATTRS{bDeviceProtocol}=="01", \
 	ENV{MIMETYPE}="x-usb-device/firmware-upgrade", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
@@ -23,14 +24,16 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceSubClass}=="02", \
 	ATTRS{bDeviceProtocol}=="00", \
 	ENV{MIMETYPE}="x-usb-device/irda-bridge", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="fe", \
 	ATTRS{bDeviceSubClass}=="03", \
 	ENV{MIMETYPE}="x-usb-device/test-measurement", \
-	ENV{HANS_TAG}="1", \
+	ENV{HANS_TAG}!="1",  \
+        ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
 
 
