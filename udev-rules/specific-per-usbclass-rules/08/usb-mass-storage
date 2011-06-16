@@ -1,9 +1,0 @@
-
-ACTION=="add", SUBSYSTEM=="usb", \
-	ATTRS{bDeviceClass}=="08", \
-        ATTRS{bDeviceSubClass}=="06", \
-	ENV{MIMETYPE}="x-usb-device/usb-mass-storage", \
-        ENV{HANS_TAG}!="1", \
-	ENV{HANS_TAG}="1", \
-	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
-
