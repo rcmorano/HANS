@@ -423,7 +423,7 @@ LABEL="usbclass_dch_end"
 
 KERNEL=="mouse*|mice*", \
 	ACTION=="add", \
-        ENV{MIMETYPE}="x-usb-device/hid-mouse", \
+        ENV{MIMETYPE}="x-usb-device/mouse-hid", \
         ENV{HANS_TAG}!="1", \
         ENV{HANS_TAG}="1", \
         RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
@@ -432,7 +432,7 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="03", \
         ATTRS{bDeviceSubClass}=="01", \
         ATTRS{bDeviceProtocol}=="00", \
-	ENV{MIMETYPE}="x-usb-device/hid-device", \
+	ENV{MIMETYPE}="x-usb-device/hid", \
         ENV{HANS_TAG}!="1", \
 	ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
@@ -441,7 +441,7 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="03", \
         ATTRS{bDeviceSubClass}=="01", \
         ATTRS{bDeviceProtocol}=="01", \
-	ENV{MIMETYPE}="x-usb-device/keyboard-hid-device", \
+	ENV{MIMETYPE}="x-usb-device/keyboard-hid", \
         ENV{HANS_TAG}!="1", \
 	ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
@@ -450,7 +450,7 @@ ACTION=="add", SUBSYSTEM=="usb", \
 	ATTRS{bDeviceClass}=="03", \
         ATTRS{bDeviceSubClass}=="01", \
         ATTRS{bDeviceProtocol}=="02", \
-	ENV{MIMETYPE}="x-usb-device/mouse-hid-device", \
+	ENV{MIMETYPE}="x-usb-device/mouse-hid", \
         ENV{HANS_TAG}!="1", \
 	ENV{HANS_TAG}="1", \
 	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
@@ -837,7 +837,7 @@ LABEL="usbclass_e0h_end"
 
 
 ACTION=="add", SUBSYSTEM=="usb", \
-	ATTRS{bDeviceClass}=="ff", \
+	ATTRS{bDeviceClass}=="ff|00", \
 	ATTRS{bDeviceSubClass}=="00", \
 	ATTRS{bDeviceProtocol}=="00", \
 	ENV{MIMETYPE}="x-usb-device/vendor-specific", \
