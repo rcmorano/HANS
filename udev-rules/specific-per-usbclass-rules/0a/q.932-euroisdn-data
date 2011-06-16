@@ -1,0 +1,9 @@
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="0a", \
+        ATTRS{bDeviceProtocol}=="91", \
+	ENV{MIMETYPE}="x-usb-device/q.932-euroisdn-data", \
+        ENV{HANS_TAG}!="1", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+

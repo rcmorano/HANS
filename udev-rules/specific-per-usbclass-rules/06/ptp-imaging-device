@@ -1,0 +1,10 @@
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="06", \
+        ATTRS{bDeviceSubClass}=="01", \
+        ATTRS{bDeviceProtocol}=="01", \
+	ENV{MIMETYPE}="x-usb-device/ptp-imaging-device", \
+        ENV{HANS_TAG}!="1", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+

@@ -1,0 +1,10 @@
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="ef", \
+        ATTRS{bDeviceSubClass}=="02", \
+        ATTRS{bDeviceProtocol}=="01", \
+	ENV{MIMETYPE}="x-usb-device/interface-association", \
+        ENV{HANS_TAG}!="1", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+

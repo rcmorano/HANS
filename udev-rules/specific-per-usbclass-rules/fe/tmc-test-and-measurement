@@ -1,0 +1,10 @@
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="fe", \
+        ATTRS{bDeviceSubClass}=="03", \
+        ATTRS{bDeviceProtocol}=="01", \
+	ENV{MIMETYPE}="x-usb-device/tmc-test-and-measurement", \
+        ENV{HANS_TAG}!="1", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+

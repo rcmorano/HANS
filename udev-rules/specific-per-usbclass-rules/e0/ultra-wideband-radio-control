@@ -1,0 +1,10 @@
+
+ACTION=="add", SUBSYSTEM=="usb", \
+	ATTRS{bDeviceClass}=="e0", \
+        ATTRS{bDeviceSubClass}=="01", \
+        ATTRS{bDeviceProtocol}=="02", \
+	ENV{MIMETYPE}="x-usb-device/ultra-wideband-radio-control", \
+        ENV{HANS_TAG}!="1", \
+	ENV{HANS_TAG}="1", \
+	RUN+="/usr/bin/hans $env{MIMETYPE} $devpath"
+
